@@ -24,6 +24,5 @@ def select_enemy():
         die = Dice(8, 8)
         hp = 8
         prize = 8
-    enemy = Enemy(hp, die, prize)
-    return enemy
 
+    return Enemy(hp, die, prize)

@@ -1,3 +1,4 @@
+# başarılı baya combatı yazarken classları çözmüşsün
 class Combat:
     def __init__(self, enemy, player):
         self.enemy = enemy
@@ -57,8 +58,9 @@ class Combat:
                 print(f"You have {self.player.hp} hp, enemy have {self.enemy.hp} hp\n")
 
         if self.enemy.hp <= 0:
-            print("Enemy hp is 0\nYou beat the enemy! (〜￣▽￣)〜\n"
-            f"You gained {self.enemy.prize} coins"    
+            print(
+                "Enemy hp is 0\nYou beat the enemy! (〜￣▽￣)〜\n"
+                f"You gained {self.enemy.prize} coins"    
             )
             self.player.gain_coin(self.enemy.prize)
         else:

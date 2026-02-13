@@ -2,10 +2,11 @@ import random
 
 class Player:
     
-    def __init__(self, hp, coin, inventory):
+    def __init__(self, hp=0, coin=0, inventory=[]):
         self.hp = int(hp)
         self.coin = int(coin)
         self.inventory = list(inventory)
+        self.character = ""
 
     @property
     def hp(self):

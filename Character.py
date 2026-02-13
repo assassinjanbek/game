@@ -1,22 +1,13 @@
 from Dice import Dice
 from Player import Player
 
-def character(player):
+def set_character(player: Player):
 
-    player_hp = None
-    player_coin = None
-    player_i = None
-
-    if player == "Gambler Wizard":
-        player_i = [Dice(6, 15)]
-        player_hp = 40
-        player_coin = 10
-    elif player == "Dice Wizard":
-        player_i = [Dice(6, 6), Dice(10, 6)]
-        player_hp = 35
-        player_coin = 0
-
-    player = Player(player_hp, player_coin, player_i)
-    
-    return player
-
+    if player.character == "Gambler Wizard":
+        player._inventory = [Dice(6, 15)]
+        player._hp = 40
+        player._coin = 10
+    elif player.character == "Dice Wizard":
+        player._inventory = [Dice(6, 6), Dice(10, 6)]
+        player._hp = 35
+        player._coin = 0

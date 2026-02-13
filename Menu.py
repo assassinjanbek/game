@@ -1,6 +1,7 @@
 import sys
+from Player import Player
 
-def menu():
+def menu(player: Player):
 
     print("Welcome to the Project J!")
 
@@ -15,13 +16,15 @@ def menu():
             "'The probability of the numbers on the dice remains the same, of course, if you cannot control them.' -Gambler Wizard\n"
             "Starts with:\n    15 six sided dice / 10 coins / 40 health")
             while True:
-                player = input("1/2: ")
-                if player == "1":
+                choice = input("1/2: ")
+                if choice == "1":
                     print("You chose Dice Wizard.\n")
-                    return "Dice Wizard"
-                elif player == "2":
+                    player.character = "Dice Wizard"
+                    return
+                elif choice == "2":
                     print("You chose Gambler Wizard.\n")
-                    return "Gambler Wizard"
+                    player.character = "Gambler Wizard"
+                    return
         elif ans == "no":
             print("ok bye!")
             sys.exit()
