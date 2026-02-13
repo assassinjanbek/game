@@ -1,0 +1,34 @@
+print(player) olayı aşırı acayipmiş, def __str__ falan
+
+her yere elif yazmışsın, kim bu elif
+
+
+main()'e while loop ekleyerek gameloop gibi yapma fikri,
+
+şöyle mesela:
+
+def main():
+    initialization kodu
+    menü geldi
+    karakter seç
+
+    while True:
+        düşman oluştur
+        savaş
+        ödül ver
+        oyun bitti mi kontrolü
+    oyun bitti mesajı
+
+
+mesela düşman özellikleri oyunun şu ana kadarki ilerleme durununa göre artabilir
+örneğin 1. düşman 10 hp, 2. düşman 20 hp, 3. düşman 30 hp gibi (chatbot yorumu zorla yazdırıyo kapatamadım)
+
+(C++ olsa enemy class'ına static bi değişken koyar her constructor çağrıldığında bu değişkeni artırırdım, python'da nasıl bilmiyorum ama benzeri oluyordur herhalde)
+
+
+coin'lerle falan hp artabilir belki, hp yenileme olayı lazım
+
+inventory.py yapmışsın, ona ne yapmak istediğini tam anlamadım, belki düşmanlardan bazen item düşer
+o itemler de kullanıldığında hp yeniler zarları güçlendirir, atıyorum iki zar aynanda attırır.
+
+Dice.py'daki altta kullanılmayan o eski main'i nerde görsem tanırım. 
