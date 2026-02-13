@@ -31,4 +31,53 @@ coin'lerle falan hp artabilir belki, hp yenileme olayı lazım
 inventory.py yapmışsın, ona ne yapmak istediğini tam anlamadım, belki düşmanlardan bazen item düşer
 o itemler de kullanıldığında hp yeniler zarları güçlendirir, atıyorum iki zar aynanda attırır.
 
-Dice.py'daki altta kullanılmayan o eski main'i nerde görsem tanırım. 
+Dice.py'daki altta kullanılmayan o eski main'i nerde görsem tanırım.
+
+13/02/2026 Janbek' in notlara cevabı:
+
+    Evet abi print(Player) öğrendiğimde beni de şok etmişti bence de çok havalı, sanırım C de yok.
+    Abi elif benim çok eski bir arkadaşım, geçenlerde baya ünlü olduğunu duydum, sizin oralarda else if diye anıldığını duymuştum :D
+
+    Evet maine while loop eklemek kesinlikle aklımda olan bir şeydi,
+    zaten hafif bi slay the spire mantığı olacak, basit bi map falan generate etmeyi planlıyorum. (Örnek için sağ ol).
+
+    Kesinlikle düşmanlara güç farkı eklemeyi düşünüyorum. bu düşmanlar test amaçlı yaptığım birkaçı. Slay the spire da sadece elit ve
+    normal düşmanlar var ama ben daha geniş bi skala yapmayı düşünüyorum, düşmanların giderek güçlenmesi de gayet mantıklı geldi.
+    (Evet python da benzeri var)
+
+    Evet arttırılacak. Bar eklemeyi düşünüyorum, bar da çeşitli interaksiyonlara girilebilecek, hatta adı pi falan mı olsa acaba.
+    Coinle alkol ve yiyecek alınabilecek, Alkol veya yiyecek can dolduracak ama yan etkileri de olacak. Barda çeşitli eventler olsun da isterim.
+
+    Market de aynı şekil coin karşılığı item veya zar vercek. Oyuna çeşitli zarlar ve itemler eklenmesi şart, yoksa çok luck based olacak.
+    Balatroda parlayan kartlar olduğu gibi burada da zarlara çeşitli özellikler atanabilmesi fikri hoşuma gidiyor.
+    Örnek: can çalan zar, bekledikçe kenar sayısı artan zar gibi gibi.. bu gibi detayları oyunun kodu oturunca derinleştireceğim, merak etme.
+
+    Karakterlerin ve enemylerin stratejiyi arttıracak special abilitiyleri olacak. Mesela gambler coin çalabilecek falan.
+
+    inventory i yapıp öyle unutmuşum sanırım. kafamda bir plan yoktu. hatta sildim. 
+
+    Dice kodunda alttaki maini silmeyi unutmuşum. kaçınılmaz bir gerçeklik bence o main, orada dursun en iyisi
+
+    Evet combat kodunu hiç emin olmayarak yazdım ama cillop gibi çalışıyor, baya mutlu etmişti.
+
+    Player class ında bazı şeyleri düzeltmişsin teşekkürler.
+
+    Yapılacaklar:
+        - Market class ı
+        - Bar class ı
+        - Event class ı (Slay the spire deki ? lar gibi)
+        - Main loop düzenlemesi
+        - Düşmanlarda subclasslar ve abilityler
+        - Farklı zorluklarda düşmanlar ve düşman çeşitliliği
+        - Player abilityleri
+        - Lore ve mekaniklerin lore a yedirilmesi
+
+    Şimdilik bu kadar yeter, fazla bile yazdım bence.
+    Yanlış anlama bunları yap diye değil kendime not olsun diye yazdım
+
+    Python kodu olmasına rağmen iyi anlamışsın kodu, artık not bırakacağım merak etme.
+    
+    Sevgilerimle, assassinjanbek
+
+
+
