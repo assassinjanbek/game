@@ -1,4 +1,5 @@
 import os
+import random
 import sys
 import Character
 from ColoredText import printcolor
@@ -80,8 +81,15 @@ def handle_command(cmd: str, game):
     # EXPLORING yazdığım 
     elif game.state == GameState.EXPLORING:
         if cmd == "":
-            game.current_enemy = select_enemy()
-            game.state = GameState.COMBAT
+            luck = random.randint(1, 100)
+            if luck <= 30:  # %30 ihtimalle düşmanla karşılaşılır
+                game.current_enemy = select_enemy()
+                game.state = GameState.COMBAT
+            elif luck <= 60:  # %30 ihtimalle bir şey bulunur
+                print("You found a coin!")
+                game.player.coin += 1
+            else:  # %40 ihtimalle hiçbir şey olmaz
+                print("you have a peaceful day exploring the world...")
         else:
             print("now is not the time for that, just press enter to explore the world")
     
