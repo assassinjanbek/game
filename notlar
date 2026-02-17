@@ -1,30 +1,4 @@
-print(player) olayı aşırı acayipmiş, def __str__ falan
-
-her yere elif yazmışsın, kim bu elif
-
-
-main()'e while loop ekleyerek gameloop gibi yapma fikri,
-
-şöyle mesela:
-
-def main():
-    initialization kodu
-    menü geldi
-    karakter seç
-
-    while True:
-        düşman oluştur
-        savaş
-        ödül ver
-        oyun bitti mi kontrolü
-    oyun bitti mesajı
-
-
-mesela düşman özellikleri oyunun şu ana kadarki ilerleme durununa göre artabilir
-örneğin 1. düşman 10 hp, 2. düşman 20 hp, 3. düşman 30 hp gibi (chatbot yorumu zorla yazdırıyo kapatamadım)
-
-(C++ olsa enemy class'ına static bi değişken koyar her constructor çağrıldığında bu değişkeni artırırdım, python'da nasıl bilmiyorum ama benzeri oluyordur herhalde)
-
+üst notları sildim.
 
 coin'lerle falan hp artabilir belki, hp yenileme olayı lazım
 
@@ -81,3 +55,53 @@ Dice.py'daki altta kullanılmayan o eski main'i nerde görsem tanırım.
 
 
 
+    14/02/2026 Yekta'dan Notlar:
+
+    [1] Roll d6 (x1 left)
+    [2] Roll d10 (x6 left)
+    [3] Roll d20 (x3 left)
+    [4] Toss a coin (x2 left)
+    [5] Use item (x2 left)
+    [6] Flee (x1 left)
+
+
+    inv, stats, help, quit savaşırken de kullanılabilecek komutlar
+
+    ----------------
+    You rolled 6 | Enemy rolled 3
+    Enemy takes 3 damage (HP: 2/5)  
+    ----------------
+
+    veya
+
+    ================================
+    🧙 Dice Wizard
+    HP: 19 ❤️      Coins: 24 🪙
+
+    Enemy
+    HP: 5 :siyah_kalp:       Uses: 3× 12-sided-dice
+
+    Inventory:
+    [1] d6 ×2
+    [2] d10 ×5
+    (type 'coin' to toss coin) x11
+
+    ================================ (chatgpt benim yorumum eklenerek)
+
+    Your move > 
+
+    os.clear()
+
+    renkli yazılar yaptım.
+
+    bunla renkleri deneyebilirsin maine atıp:
+    
+    # testing colors
+    printcolor("grey", "grey")
+    printcolor("cyan", "cyan")
+    printcolor("red", "red")
+    printcolor("green", "green")
+    printcolor("yellow", "yellow")
+    printcolor("blue", "blue")
+    printcolor("magenta", "magenta")
+    printcolor("white", "white")

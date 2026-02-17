@@ -7,6 +7,7 @@ class Player:
         self.coin = int(coin)
         self.inventory = list(inventory)
         self.character = ""
+        self.score = 0
 
     @property
     def hp(self):
@@ -46,7 +47,7 @@ class Player:
     
     def toss_a_coin(self):
         if self.coin == 0:
-            print("\nYou don't have any coin")
+            print("\nYou don't have any \033[93mcoin\033[0m")
             return 0
         else:
             value = random.randint(1,2)
@@ -56,7 +57,7 @@ class Player:
     def dice_info(self):
         message = ""
         for dice in self.inventory:
-            message += f"{str(dice)}"
+            message += f"[{self.inventory.index(dice) + 1}] {str(dice)}"
         return message
 
     def __str__(self):

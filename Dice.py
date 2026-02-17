@@ -27,7 +27,7 @@ class Dice:
         return value
     
     def __str__(self):
-        return f"You have {self.quantity}, {self.side} sided dice\n"
+        return f"\033[32m{self.quantity}, {self.side}\033[0m sided dice\n"
     
 
 
@@ -39,6 +39,4 @@ def main():
             print(six_sided_dice.rolling())
         if ans == "no":
             print("ok bye!")
-            return 
-
-        
+            return
