@@ -10,27 +10,37 @@ import Events
 
 
 # Önce state'e bakıyor, sonra ona göre komut işliyor. 
-# Mesela start menüsünde sadece yes/no/info komutları geçerli, diğerleri değil.
+# Mesela start menüsünde yes/no/info komutları geçerli, diğerleri değil.
 
 def handle_command(cmd: str, game):
 
-    # Önce genel komutlara baktım, sonra state'e göre özel komutlara.
     parts = cmd.split() # (python kodu çok yararlı)
-    if not parts:
-        return
-    
-    command = parts[0]
-    args = parts[1:]
-    if command == "exit":
-        print("wizards will haunt you...")
-        game.running = False
-    if command == "help":
-        print("You can: help, exit, inventory, status, score")
-        return
-    elif command == "use":
-        Events.use_item(args, game.player) # Events daha yapmadım, göstermelik
-        return
-    
+    if len(parts) != 0:
+        command = parts[0]
+        args = parts[1:]
+        if command == "exit":
+            print("wizards will haunt you...")
+            game.running = False
+            return
+        if command == "help":
+            print("You can: help, exit, inventory, status, score")
+            return
+        elif command == "inventory":
+            if not game.player.inventory:
+                print("Your inventory is empty.")
+            else:
+                print("Your inventory:") # chatgpt yaptı
+                for idx, item in enumerate(game.player.inventory, 1):
+                    print(f"{idx}) {item.quantity}x {item.side}-sided die")
+            return
+        elif command == "status":
+            print(f"Your health: {game.player.hp}")
+            print(f"Your coins: {game.player.coin}")
+            return
+        elif command == "use":
+            Events.use_item(args, game.player) # Events daha yapmadım, göstermelik
+            return
+        
     # START Menüsü
     if game.state == GameState.START:
         if cmd == "yes":
@@ -51,10 +61,9 @@ def handle_command(cmd: str, game):
             "I think you should explore the rest of the game by yourself. Have fun!\n")
         else:
             print("Please type 'yes' to start or 'info' for more information, or 'no' to remain unsatisfied.")
-        return
     
     # CHARACTER SELECTION menüsü
-    if game.state == GameState.MENU:
+    elif game.state == GameState.MENU:
         if cmd == "1":
             printcolor("\nYou chose Dice Wizard.\n\n\n", "blue")
             game.player = Player("Dice Wizard")
@@ -67,25 +76,23 @@ def handle_command(cmd: str, game):
             game.state = GameState.EXPLORING
         else:
             print("Type 1 for Dice Wizard or 2 for Gambler Wizard.")
-        return
     
     # EXPLORING yazdığım 
-    if game.state == GameState.EXPLORING:
-        game.current_enemy = select_enemy()
-        game.state = GameState.COMBAT
-        return
+    elif game.state == GameState.EXPLORING:
+        if cmd == "":
+            game.current_enemy = select_enemy()
+            game.state = GameState.COMBAT
+        else:
+            print("now is not the time for that, just press enter to explore the world")
     
     # COMBAT sekansı
-    if game.state == GameState.COMBAT:
+    elif game.state == GameState.COMBAT:
         Combat.start_combat(game.current_enemy, game.player)
         if game.player.hp <= 0:
             game.state = GameState.GAME_OVER
-            return
         else:
             game.current_enemy = None
             game.state = GameState.EXPLORING
-        return 
     
-    else:
-        print("Invalid command. Type 'help' for a list of commands.")
-        return
+    elif game.state == GameState.GAME_OVER:
+        game.running = False

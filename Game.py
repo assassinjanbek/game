@@ -3,32 +3,38 @@ from Player import Player
 from Enemy_selection import select_enemy
 from ColoredText import printcolor
 
-class GameState(Enum):
-    START = auto()
-    MENU = auto()
-    EXPLORING = auto()
-    COMBAT = auto()
-    GAME_OVER = auto()
+# Enum sadece okumayı kolaylaştıran bir şey, GameState.START 0 demek, GameState.MENU 1 demek, normal 0, 1, 2, 3'ten farkı yok, 
+# yani if bloğunda şu oluyor: game.state = 1 ise menüyü aç, game.state = 2 ise exploring yaz gibi, game.state normal int aslında
+class GameState(Enum): 
+    START = 0
+    MENU = 1
+    EXPLORING = 2
+    COMBAT = 3
+    GAME_OVER = 4
 
 class Game:
     def __init__(self):
-        self.state= GameState.START
+        self.state = GameState.START
         self.running = True
         self.player = Player()
         self.current_enemy = None
 
 
+    # Game class'ı oyunu çalışyırıyor, bu şekilde game class'ına özel variable'lar yapıp istediğim yerde kullanabiliyorum, 
+    # mesela player'ı burada tanımladım
     def run(self):
         print("Welcome to the Project J!")
 
-        # Ana loop, sadece bu üç şey dönüyor oyun boyu
+        # Ana loop, sadece bu üç şey döndürüyor oyunu
         while self.running:
             self.render_hud() # ekrana gelcek şeyi burda basıyorum, ilerde sabit yazılar yapılabilir bu şekilde
-            cmd = input("\n").strip().lower() # input bildiğin
-            import CommandHandler
-            CommandHandler.handle_command(cmd, self) # komutları buraya attım
+            cmd = input("\n").strip().lower() # input normal
+            import CommandHandler # bunu buraya chatgpt yazdırdı, circular import oluyormuş çözemedim, uğraşmadım daha doğrusu
+            CommandHandler.handle_command(cmd, self) # komutları buraya attım, orda ilgilendim tamamen
 
 
+    # Bu fonksiyon ekrana gelicek şeyleri basıyor, böyle bir fonksiyon yerine CommandHandler'da her komutun sonunda print de yapabilirdim
+    # ama böyle daha ileriye dönük, böyle hem komutlar da basılabilir combat seçenekleri gibi, ekranda sabit kalcak şeyler de basılabilir
     def render_hud(self):
 
         if self.state == GameState.START:
