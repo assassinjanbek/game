@@ -1,5 +1,6 @@
 import os
 import sys
+import Character
 from ColoredText import printcolor
 from Combat import Combat
 from Enemy_selection import select_enemy
@@ -12,6 +13,23 @@ import Events
 # Mesela start menüsünde sadece yes/no/info komutları geçerli, diğerleri değil.
 
 def handle_command(cmd: str, game):
+
+    # Önce genel komutlara baktım, sonra state'e göre özel komutlara.
+    parts = cmd.split() # (python kodu çok yararlı)
+    if not parts:
+        return
+    
+    command = parts[0]
+    args = parts[1:]
+    if command == "exit":
+        print("wizards will haunt you...")
+        game.running = False
+    if command == "help":
+        print("You can: help, exit, inventory, status, score")
+        return
+    elif command == "use":
+        Events.use_item(args, game.player) # Events daha yapmadım, göstermelik
+        return
     
     # START Menüsü
     if game.state == GameState.START:
@@ -34,20 +52,18 @@ def handle_command(cmd: str, game):
         else:
             print("Please type 'yes' to start or 'info' for more information, or 'no' to remain unsatisfied.")
         return
-
-    parts = cmd.split() # python kodu çok yararlı
-    # if not parts:
-    #     return
     
     # CHARACTER SELECTION menüsü
     if game.state == GameState.MENU:
-        if parts[0] == "1":
-            printcolor("You chose Dice Wizard.\n", "blue")
+        if cmd == "1":
+            printcolor("\nYou chose Dice Wizard.\n\n\n", "blue")
             game.player = Player("Dice Wizard")
+            Character.set_character(game.player)
             game.state = GameState.EXPLORING
-        elif parts[0] == "2":
-            printcolor("You chose Gambler Wizard.\n", "magenta")
+        elif cmd == "2":
+            printcolor("\nYou chose Gambler Wizard.\n\n\n", "magenta")
             game.player = Player("Gambler Wizard")
+            Character.set_character(game.player)
             game.state = GameState.EXPLORING
         else:
             print("Type 1 for Dice Wizard or 2 for Gambler Wizard.")
@@ -66,28 +82,10 @@ def handle_command(cmd: str, game):
             game.state = GameState.GAME_OVER
             return
         else:
-            printcolor(f"You defeated the {game.current_enemy.name}!", "green")
-        return
+            game.current_enemy = None
+            game.state = GameState.EXPLORING
+        return 
     
-    if not parts:
-            return
-    command = parts[0]
-    args = parts[1:]
-    if command == "exit":
-        print("wizards will haunt you...")
-        game.running = False
-    if command == "help":
-        print("You can: help, exit, inventory, status, score")
-    elif command == "use":
-        Events.use_item(args, game.player) 
-    # elif command == "inventory":
-    #     print("Your inventory: ")
-    #     game.player.print_inventory()
-    # elif command == "status":
-    #     print("Your status: ")
-    #     game.player.print_status()
-    # elif command == "score":
-    #     print("Your score is: ")
-    #     game.player.print_score()
     else:
-        print("Unknown command. Type 'help' for a list of commands.")
+        print("Invalid command. Type 'help' for a list of commands.")
+        return

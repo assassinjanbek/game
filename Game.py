@@ -24,7 +24,7 @@ class Game:
         # Ana loop, sadece bu üç şey dönüyor oyun boyu
         while self.running:
             self.render_hud() # ekrana gelcek şeyi burda basıyorum, ilerde sabit yazılar yapılabilir bu şekilde
-            cmd = input("\n>> ").strip().lower() # input bildiğin
+            cmd = input("\n").strip().lower() # input bildiğin
             import CommandHandler
             CommandHandler.handle_command(cmd, self) # komutları buraya attım
 
@@ -47,11 +47,11 @@ class Game:
             
         
         if self.state == GameState.EXPLORING:
-            printcolor("\nYou are exploring the world...\n", "yellow")
+            printcolor("You are exploring the world...", "yellow")
             
         
         if self.state == GameState.COMBAT:
-            printcolor(f"\nYou've encountered an {self.current_enemy.name}!\n", "red")
+            printcolor(f"You've encountered an {self.current_enemy.name}!", "red")
 
         if self.state == GameState.GAME_OVER:
-            printcolor("\nYou are dead. Sorry.（＞人＜；）", "red")
+            printcolor("You are dead. Sorry.（＞人＜；）", "red")
