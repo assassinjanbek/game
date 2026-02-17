@@ -57,7 +57,8 @@ class Game:
             
         
         if self.state == GameState.COMBAT:
-            printcolor(f"You've encountered an {self.current_enemy.name}!", "red")
+            printcolor(f"You've encountered a {self.current_enemy.name}!", "red")
 
         if self.state == GameState.GAME_OVER:
             printcolor("You are dead. Sorry.（＞人＜；）", "red")
+            print("score: " + str(self.player.score))

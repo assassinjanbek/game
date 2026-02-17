@@ -4,8 +4,10 @@ import sys
 import Character
 from ColoredText import printcolor
 from Combat import Combat
+from Dice import Dice
 from Enemy_selection import select_enemy
 from Game import GameState
+import Messages
 from Player import Player
 import Events
 
@@ -24,7 +26,7 @@ def handle_command(cmd: str, game):
             game.running = False
             return
         if command == "help":
-            print("You can: help, exit, inventory, status, score")
+            print("You can: help, exit, inventory, status, market, score")
             return
         elif command == "inventory":
             if not game.player.inventory:
@@ -37,6 +39,9 @@ def handle_command(cmd: str, game):
         elif command == "status":
             print(f"Your health: {game.player.hp}")
             print(f"Your coins: {game.player.coin}")
+            return
+        elif command == "score":
+            print(f"Your score: {game.player.score}")
             return
         elif command == "use":
             Events.use_item(args, game.player) # Events daha yapmadım, göstermelik
@@ -82,14 +87,41 @@ def handle_command(cmd: str, game):
     elif game.state == GameState.EXPLORING:
         if cmd == "":
             luck = random.randint(1, 100)
-            if luck <= 30:  # %30 ihtimalle düşmanla karşılaşılır
+            if luck <= 40:  # %40 ihtimalle düşmanla karşılaşılır
                 game.current_enemy = select_enemy()
                 game.state = GameState.COMBAT
-            elif luck <= 60:  # %30 ihtimalle bir şey bulunur
+            elif luck <= 70:  # %30 ihtimalle bir şey bulunur
                 print("You found a coin!")
                 game.player.coin += 1
-            else:  # %40 ihtimalle hiçbir şey olmaz
-                print("you have a peaceful day exploring the world...")
+            else:  # %30 ihtimalle hiçbir şey olmaz
+                print(Messages.Explore[random.randint(0, len(Messages.Explore) - 1)])
+        elif cmd == "market":
+            print("Welcome to the market! Here you can buy dice with your coins.")
+            print("Available dice:")
+            print("1) 6-sided die (cost: 2 coin)")
+            print("2) 10-sided die (cost: 3 coins)")
+            print("Type the number of the die you want to buy, or 'leave' to leave the market.")
+            while True:
+                market_cmd = input().strip().lower()
+                if market_cmd == "leave":
+                    print("Leaving the market...")
+                    break
+                elif market_cmd == "1":
+                    if game.player.coin >= 2:
+                        game.player.coin -= 2
+                        game.player.inventory.append(Dice(6, 1))
+                        print("You bought a 6-sided die!")
+                    else:
+                        print("You don't have enough coins.")
+                elif market_cmd == "2":
+                    if game.player.coin >= 3:
+                        game.player.coin -= 3
+                        game.player.inventory.append(Dice(10, 1))
+                        print("You bought a 10-sided die!")
+                    else:
+                        print("You don't have enough coins.")
+                else:
+                    print("Invalid command. Please type '1', '2', or 'exit'.") #gpt yazdı marketin çoğunu
         else:
             print("now is not the time for that, just press enter to explore the world")
     
