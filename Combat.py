@@ -77,7 +77,7 @@ class Combat:
         if enemy.hp <= 0:
             print(
                 "- - - - - - - - - - - - - - - - - - - - - - - -\n"
-                f"\033[32mYou beat the {enemy.name}! (〜￣▽￣)〜\033[0m\n"
+                f"\033[32mYou beat the\033[0m {enemy.name}\033[32m! (〜￣▽￣)〜\033[0m\n"
                 f"You gained \033[93m{enemy.prize}\033[0m \033[93mcoins\033[0m\n"
                 "- - - - - - - - - - - - - - - - - - - - - - - -\n"
             )
