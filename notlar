@@ -55,7 +55,7 @@ Dice.py'daki altta kullanılmayan o eski main'i nerde görsem tanırım.
 
 
 
-    14/02/2026 Yekta'dan Notlar:
+14/02/2026 Yekta'dan Notlar:
 
     [1] Roll d6 (x1 left)
     [2] Roll d10 (x6 left)
@@ -86,11 +86,9 @@ Dice.py'daki altta kullanılmayan o eski main'i nerde görsem tanırım.
     [2] d10 ×5
     (type 'coin' to toss coin) x11
 
-    ================================ (chatgpt benim yorumum eklenerek)
+    ================================ (chatgpt yazı biraz değiştirdim)
 
-    Your move > 
-
-    os.clear()
+    os.clear() koymak
 
     renkli yazılar yaptım.
 
@@ -105,3 +103,19 @@ Dice.py'daki altta kullanılmayan o eski main'i nerde görsem tanırım.
     printcolor("blue", "blue")
     printcolor("magenta", "magenta")
     printcolor("white", "white")
+
+17/02/2026 Yekta'dan Yeni Notlar:
+
+    Abi benim bu chess engine projemden öğrendiğim bir parsing methodu var, komut girişi yani.
+    Benim chess engine "fen fen/her/neyse/yazıyorsun" ya da "move e2e4" falan gibi komutlarla çalışıyor.
+    İlk kelime komut geri kalanı da parametre gibi, ilk kelimeyi okuyosun ona göre o komutu çalıştıyorsun falan.
+    Belki bu oyunda da kullanılabilinir. Biraz oyuncuya da özgürlük hissi verir. 
+    İlerde işte envantere girip eşya kullanmadır, onu bunu yapma stat bakma veya belki zarların ihtimallerini gösterme falan gibi
+    şeyler ekleyebilirsin, her şey ekranda gösterilmek zorunda kalmaz.
+
+    Ben kendi yektasalımda zaten bi event sistemi yazıcaktım nasıl olsun diye düşünürken buna evrildi onu bi yaziyim şimdi.
+    oyunlarda genelde state olur combat state gibi onu da eklemek lazım diye tahmin ediyorum, 
+    öyle sistemlerde mesela combat'ta player attack bir event, enemy attack başka bi event oluyor ona bakmak lazım düzenleme gibi sadece zaten.
+    event dediklerim de event.PlayerAttack() gibi fonksiyon işte normal.
+
+    print("\033[H\033[J", end="") Ekranı temizleyen bir yazıymış, internette buldum

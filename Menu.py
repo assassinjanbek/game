@@ -1,7 +1,6 @@
 import sys
 from ColoredText import printcolor
 from Player import Player
-from inputcmd import inputcmd
 
 def menu(player: Player):
 
@@ -9,7 +8,7 @@ def menu(player: Player):
 
     while True:
         printcolor("Start the adventure? (yes/no/info)", "white")
-        ans = inputcmd()
+        ans = input()
         if ans == "yes":
             printcolor("\nLet's begin! Choose your character.\n\n", "cyan")
             print(
@@ -20,7 +19,7 @@ def menu(player: Player):
             "'The probability of the numbers on the dice remains the same, of course, if you cannot control them.' -Gambler Wizard\n"
             "Starts with:\n    15 six sided dice / 10 coins / 40 health")
             while True:
-                choice = inputcmd()
+                choice = input()
                 if choice == "1":
                     printcolor("You chose Dice Wizard.\n", "blue")
                     player.character = "Dice Wizard"

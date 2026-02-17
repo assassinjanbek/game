@@ -2,7 +2,6 @@ from ColoredText import printcolor
 from Enemy import Enemy
 from Player import Player
 from Roman import Roman
-from inputcmd import inputcmd
 
 class Combat:
 
@@ -13,7 +12,7 @@ class Combat:
                 f"{player.dice_info()}\n"
                 f"Choose a \033[32mdice\033[0m from your inventory\n"
             )
-            action = inputcmd()
+            action = input() # TODO: Merge with Commands.py, put inputcmd() in someway, or make it all an 'event/command
             if action == "coin":
                 value = player.toss_a_coin()
                 if value == 0:
