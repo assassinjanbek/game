@@ -5,9 +5,9 @@ class Map:
     def __init__(floor, choices, n_choice):
         self.floor = int(floor)
         self.choices = choices
-        self.n_choice = random.randint(2,3)
+        self.n_choice = n_choice
         self.history = []
-        self.pool = ["Merciful Enemy", "Cruel Enemy", "Random Enemy", "Event", "Market", "Tavern"]
+        self.pool = ["Merciful Enemy", "Cruel Enemy", "Event", "Market", "Tavern"]
         self.special_floor = 10
 
     def pool_filter(self, pool):
@@ -19,13 +19,10 @@ class Map:
                 continue
             elif room == "Market" and self.history[floor - 1] == "Market":
                 continue
-            elif room == "Random Enemy" and self.floor < 4:
-                continue
             elif room == "Tavern" and self.history[floor - 1] == "Tavern":
                 continue
-            
-            
-            filtered_pool.append(room)
+        n_choice = random.randint(2,3)
+        filtered_pool.append(room)
 
         
     def display_choices(self, choices):
