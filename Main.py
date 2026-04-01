@@ -1,15 +1,11 @@
 import Character
 import Menu
-import Enemy_selection
-import Combat
+import GameLoop
 
 def game():
-    player = Menu.menu()
-    player = Character.character(player)
+    player_name = Menu.menu()
+    player = Character.character(player_name)
     print(player)
-    enemy = Enemy_selection.select_enemy()
-    combat = Combat.Combat(enemy, player)
-    combat.start_combat()
-    print(player)
+    loop()
 
 game()
