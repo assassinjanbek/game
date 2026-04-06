@@ -1,19 +1,27 @@
 from Combat import Combat
 import Enemy_selection
+from Tavern import Tavern
+from Market import Market
 
-def resolve(str, player):
+def resolve(room, player):
     print("hello")
-    if str == "Merciful Enemy":
-        enemy = Enemy_selection.select_enemy()
+    if room == "Merciful Enemy":
+        enemy = Enemy_selection.select_merciful_enemy()
         combat = Combat(enemy, player)
         combat.start_combat()
-    elif str == "Cruel Enemy":
-        enemy = Enemy_selection.select_enemy()
+
+    elif room == "Cruel Enemy":
+        enemy = Enemy_selection.select_cruel_enemy()
         combat = Combat(enemy, player)
         combat.start_combat()
-    elif str == "Tavern":
-        print("Take a rest")
-    elif str == "Event":
+
+    elif room == "Tavern":
+        tavern = Tavern(player)
+        tavern.enter_tavern()
+
+    elif room == "Event":
         print("What?!? an event?!?!")
-    elif str == "Market":
-        print("Senin paran burada geçmez kardeşim.")
+
+    elif room == "Market":
+        market = Market(player)
+        market.enter_market()

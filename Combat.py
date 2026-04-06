@@ -1,5 +1,9 @@
+import sys
+from Enemy import Enemy
+from Player import Player
+
 class Combat:
-    def __init__(self, enemy, player):
+    def __init__(self, enemy: Enemy, player: Player):
         self.enemy = enemy
         self.player = player
 
@@ -63,6 +67,7 @@ class Combat:
             self.player.gain_coin(self.enemy.prize)
         else:
             print("You are dead. Sorry.（＞人＜；）")
+            sys.exit()
             
     def players_dice(self):
         while True:

@@ -27,7 +27,7 @@ class Dice:
         return value
     
     def __str__(self):
-        return f"You have {self.quantity}, {self.side} sided dice\n"
+        return f"You have {self.quantity}, d{self.side}\n"
     
 
 

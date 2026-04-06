@@ -31,16 +31,16 @@ def select_cruel_enemy():
     enemy_no = random.randint(1,3)
     if enemy_no == 1:
         die = Dice(20, 2)
-        hp = 1
-        prize = 8
+        hp = 2
+        prize = 15
     elif enemy_no == 2:
-        die = Dice(12, 3)
-        hp = 5
-        prize = 8
+        die = Dice(12, 4)
+        hp = 6
+        prize = 15
     else:
         die = Dice(8, 8)
         hp = 8
-        prize = 8
+        prize = 15
     enemy = Enemy(hp, die, prize)
     return enemy
 
