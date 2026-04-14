@@ -9,44 +9,67 @@ class Tavern:
         print("What a cozy tavern\n")
         tvrn = True
         while tvrn:
-            print("What would you do?\n\n"
-            "[1] Take a beer (give 2 coin => heal 3 hp)\n"
-            "[2] Eat a meal (give 6 coin => heal 12 hp)\n"
-            "[3] Loan a room (give 20 coin => heal to your max hp)\n"
-            "[4] Left the tavern (exit)\n")
+            if self.player.hp == self.player.max_hp:
+                print("Your health is full.\n\n"
+                "[1] Take an additional beer (give 2 coins)\n"
+                "[2] Left the tavern (exit)")
 
-            inp = input("(1/2/3/4) : ")
+                inp = input("(1/2): ")
 
-            if inp == "1":
-                _ = self.player.spend_coin(2)
-                if _ == 0:
-                    continue
+                if inp == "1":         
+                    _ = self.player.spend_coin(2)
+                    if _ == 0:
+                        print("\nYou don't have enough coin, even for a beer...\n")
+                        continue
+                    else:
+                        self.player.heal(3)
+                    print("\nBeer is as cold as your enemmies blood. You liked it.\n")
+
+                elif inp == "2":
+                    tvrn = False
+                    print("\nYou are leaving from this cozy tavern\n")
+                
                 else:
-                    self.player.heal(3)
-                print("Beer is as cold as your enemmies blood. You liked it.\n")
-
-            if inp == "2":
-                _ = self.player.spend_coin(6)
-                if _ == 0:
-                    continue
-                else:
-                    self.player.heal(12)
-                print("You really apreciate the meal.\n")
-
-            if inp == "3":
-                _ = self.player.spend_coin(20)
-                if _ == 0:
-                    continue
-                else:
-                    self.player.hp = self.player.max_hp
-                print("The bed was decent, but it's better than outside. You felt refreshed.\n")
-
-            if inp == "4":
-                tvrn = False
-                print("You are leaving from this cozy tavern\n")
-
+                    print("Please enter a reasonable number.\n")
+                
             else:
-                print("Please enter a reasonable number.\n")
+                print("What would you do?\n\n"
+                "[1] Take a beer (give 2 coins => heal 3 hp)\n"
+                "[2] Eat a meal (give 6 coins => heal 12 hp)\n"
+                "[3] Loan a room (give 20 coins => heal to your max hp)\n"
+                "[4] Left the tavern (exit)")
+
+                inp = input("(1/2/3/4): ")
+
+                if inp == "1":
+                    _ = self.player.spend_coin(2)
+                    if _ == 0:
+                        print("\nYou don't have enough coin, even for a beer...\n")
+                        continue
+                    else:
+                        self.player.heal(3)
+                    print("\nBeer is as cold as your enemmies blood. You liked it.\n")
+                elif inp == "2":
+                    _ = self.player.spend_coin(6)
+                    if _ == 0:
+                        print("\nYou don't have enough coins.\n")
+                        continue
+                    else:
+                        self.player.heal(12)
+                    print("\nYou really apreciated the meal.\n")
+                elif inp == "3":
+                    _ = self.player.spend_coin(20)
+                    if _ == 0:
+                        print("\nDid you really thinked that these will be enough for a room? Go fin somewhere else!\n")
+                        continue
+                    else:
+                        self.player.hp = self.player.max_hp
+                    print("\nThe bed was decent, and it's better than outside. You felt refreshed.\n")
+                elif inp == "4":
+                    tvrn = False
+                    print("\nYou are leaving from this cozy tavern\n")
+                else:
+                    print("Please enter a reasonable number.\n")
                 
 
     

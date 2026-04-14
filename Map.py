@@ -32,10 +32,10 @@ class Map:
     def display_choices(self, rooms):
         if len(rooms) == 2:
             print("Choose your room:\n\n"
-            f"> {rooms[0]}\n"
-            f"> {rooms[1]}\n")
+            f"[1]> {rooms[0]}\n"
+            f"[2]> {rooms[1]}\n")
             while True:
-                ans = input("1 or 2: ")
+                ans = input("Choose your room: ")
                 if ans == "1" or ans == "2":
                     return rooms[int(ans)-1]
                 else:
@@ -43,11 +43,11 @@ class Map:
 
         if len(rooms) == 3:
             print("Choose your room:\n\n"
-            f"> {rooms[0]}\n"
-            f"> {rooms[1]}\n"
-            f"> {rooms[2]}\n")
+            f"[1]> {rooms[0]}\n"
+            f"[2]> {rooms[1]}\n"
+            f"[3]> {rooms[2]}\n")
             while True:
-                ans = input("1 or 2 or 3: ")
+                ans = input("Choose your room: ")
                 if ans == "1" or ans == "2" or ans == "3":
                     return rooms[int(ans)-1]
                 else:

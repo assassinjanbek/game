@@ -44,3 +44,15 @@ def select_cruel_enemy():
     enemy = Enemy(hp, die, prize)
     return enemy
 
+def select_boss():
+    enemy_no = random.randint(1,2)
+    if enemy_no == 1:
+        die = Dice(10, 20)
+        hp = 15
+        prize = 100
+    else:
+        die = Dice(12, 12)
+        hp = 20
+        prize = 100
+    enemy = Enemy(hp, die, prize)
+    return enemy

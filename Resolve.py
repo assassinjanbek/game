@@ -4,7 +4,6 @@ from Tavern import Tavern
 from Market import Market
 
 def resolve(room, player):
-    print("hello")
     if room == "Merciful Enemy":
         enemy = Enemy_selection.select_merciful_enemy()
         combat = Combat(enemy, player)
@@ -25,3 +24,8 @@ def resolve(room, player):
     elif room == "Market":
         market = Market(player)
         market.enter_market()
+
+def boss(player):
+    enemy = Enemy_selection.select_boss()
+    combat = Combat(enemy, player)
+    combat.start_combat()

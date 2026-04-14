@@ -27,7 +27,12 @@ class Dice:
         return value
     
     def __str__(self):
-        return f"You have {self.quantity}, d{self.side}\n"
+        return f"\033[92m{self.quantity}, {self.side}\033[0m sided dice \n"
+    
+class Buyable_Dice(Dice):
+    def __init__(self, side, quantity, price):
+        super().__init__(side, quantity)
+        self.price = price
     
 
 

@@ -24,11 +24,12 @@ class Combat:
         self._player = player
 
     def start_combat(self):
-
+        round_ = 1
         print(f"Your enemy has {self.enemy.hp} hp.")
         print(f"Your enemy will use {self.enemy.die.quantity}, {self.enemy.die.side} sided dice.\n")
 
         while self.enemy.hp > 0 and self.player.hp > 0:
+            print(f"- Round {round_} -")
             die = self.players_dice()
             if die == 1 or die == 2:
                 print("You tossed a coin! 🪙")
@@ -56,6 +57,7 @@ class Combat:
                 f"You rolled {players_value}\n"
                 f"Enemy rolled {enemy_value}\n"
             )
+            round_ += 1
 
             if self.enemy.hp > 0 and self.player.hp > 0:
                 print(f"You have {self.player.hp} hp, enemy have {self.enemy.hp} hp\n")
@@ -71,8 +73,10 @@ class Combat:
             
     def players_dice(self):
         while True:
-            no = input(f"You have {self.player.coin} coin\n{self.player.dice_info()}\nChoose a dice from your inventory: ").strip()
-            if no == "coin":
+            no = input(f"You have {self.player.coin}\033[93m coin\033[0m\n"
+                       f"{self.player.dice_info()}\n"
+                       f"Choose a dice from your inventory: ").strip()
+            if no == "c":
                 value = self.player.toss_a_coin()
                 if value == 0:
                     continue

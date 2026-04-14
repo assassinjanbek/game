@@ -1,12 +1,14 @@
 import random
+from Dice import Dice
 
 class Player:
     
     def __init__(self, hp, coin, inventory, max_hp):
+        self.max_hp = int(max_hp)
         self.hp = int(hp)
         self.coin = int(coin)
         self.inventory = list(inventory)
-        self.max_hp = int(max_hp)
+        
 
     @property
     def hp(self):
@@ -62,12 +64,23 @@ class Player:
             value = random.randint(1,2)
             self.coin -= 1
             return value
+        
+    def buying_die(self, d):
+        die_found = None
+        for die in self.inventory:
+            if die.side == d:
+                die_found = die
+                break
+        if die_found:
+            die_found.quantity += 1 
+        else:
+            self.inventory.append(Dice(d, 1))
 
     def dice_info(self):
         message = ""
         for dice in self.inventory:
-            message += f"{str(dice)}"
+            message += f"[{(self.inventory.index(dice)) + 1}] {str(dice)}"
         return message
 
     def __str__(self):
-        return f"Your hp ❤️ : {self.hp}\nYour coins 🪙 : {self.coin}\nYour dices 🎲: \n{self.dice_info()}"
+        return f"Your hp : {self.hp} ❤️\nYour coins : {self.coin} 🪙\nYour dices 🎲: \n{self.dice_info()}"

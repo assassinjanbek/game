@@ -7,6 +7,6 @@ def game():
     player = Character.character(player_name)
     print(player)
     GameLoop.loop(player)
-    print("Congrats! you won the game!")
+    print("Congrats! You beat the boss! YOU won the game!")
 
 game()

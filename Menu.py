@@ -34,5 +34,5 @@ def menu():
             "One of them is strange enemmies. When you encounter with an enemy, you have two different option.\n"
             "You can choose an item (probably a dice) from your inventory or your can toss a coin.\n"
             "If you desire to use your first item, you should type 1, and similarly 2 for your second item.\n"
-            "If you desire to toss a coin, which counts as a two sided dice, you should simply type 'coin' (you will lose a coin).\n"
+            "If you desire to toss a coin, which counts as a two sided dice, you should simply type 'c' (you will lose a coin).\n"
             "I think you should explore the rest of the game by yourself. Have fun!")
