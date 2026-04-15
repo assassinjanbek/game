@@ -1,5 +1,4 @@
 import random
-from Dice import Dice
 
 class Player:
     
@@ -64,23 +63,13 @@ class Player:
             value = random.randint(1,2)
             self.coin -= 1
             return value
-        
-    def buying_die(self, d):
-        die_found = None
-        for die in self.inventory:
-            if die.side == d:
-                die_found = die
-                break
-        if die_found:
-            die_found.quantity += 1 
-        else:
-            self.inventory.append(Dice(d, 1))
 
     def dice_info(self):
         message = ""
         for dice in self.inventory:
             message += f"[{(self.inventory.index(dice)) + 1}] {str(dice)}"
         return message
-
-    def __str__(self):
-        return f"Your hp : {self.hp} ❤️\nYour coins : {self.coin} 🪙\nYour dices 🎲: \n{self.dice_info()}"
+    
+    def general_info(self):
+        message = f"\nYour hp is {self.hp}/{self.max_hp} ❤️\nYou have {self.coin}\033[93m coin\033[0m 🪙\nYour dices 🎲 :\n{self.dice_info()}\n"
+        return message

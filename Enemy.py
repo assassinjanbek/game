@@ -34,3 +34,7 @@ class Enemy:
 
     def heal(self, heal):
         self.hp += heal
+
+    def general_info(self):
+        message = f"Enemy has {self.hp} hp ❤️\n{self.die.quantity}, {self.die.side} sided dice 🎲."
+        return message

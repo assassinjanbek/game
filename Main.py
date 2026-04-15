@@ -5,7 +5,7 @@ import GameLoop
 def game():
     player_name = Menu.menu()
     player = Character.character(player_name)
-    print(player)
+    print(player.general_info())
     GameLoop.loop(player)
     print("Congrats! You beat the boss! YOU won the game!")
 

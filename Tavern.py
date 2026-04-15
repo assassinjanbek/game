@@ -6,9 +6,11 @@ class Tavern:
 
     def enter_tavern(self):
 
-        print("What a cozy tavern\n")
+        print("\nWhat a cozy tavern!")
+
         tvrn = True
         while tvrn:
+            print(self.player.general_info(), end="")
             if self.player.hp == self.player.max_hp:
                 print("Your health is full.\n\n"
                 "[1] Take an additional beer (give 2 coins)\n"
@@ -19,18 +21,18 @@ class Tavern:
                 if inp == "1":         
                     _ = self.player.spend_coin(2)
                     if _ == 0:
-                        print("\nYou don't have enough coin, even for a beer...\n")
+                        print("\nYou don't have enough coin, even for a beer...")
                         continue
                     else:
                         self.player.heal(3)
-                    print("\nBeer is as cold as your enemmies blood. You liked it.\n")
+                    print("\nBeer is as cold as your enemmies blood. You liked it.")
 
                 elif inp == "2":
                     tvrn = False
                     print("\nYou are leaving from this cozy tavern\n")
                 
                 else:
-                    print("Please enter a reasonable number.\n")
+                    print("\nPlease enter a reasonable number.")
                 
             else:
                 print("What would you do?\n\n"
@@ -44,32 +46,32 @@ class Tavern:
                 if inp == "1":
                     _ = self.player.spend_coin(2)
                     if _ == 0:
-                        print("\nYou don't have enough coin, even for a beer...\n")
+                        print("\nYou don't have enough coin, even for a beer...")
                         continue
                     else:
                         self.player.heal(3)
-                    print("\nBeer is as cold as your enemmies blood. You liked it.\n")
+                    print("\nBeer is as cold as your enemmies blood. You liked it.")
                 elif inp == "2":
                     _ = self.player.spend_coin(6)
                     if _ == 0:
-                        print("\nYou don't have enough coins.\n")
+                        print("\nYou don't have enough coins.")
                         continue
                     else:
                         self.player.heal(12)
-                    print("\nYou really apreciated the meal.\n")
+                    print("\nYou really apreciated the meal.")
                 elif inp == "3":
                     _ = self.player.spend_coin(20)
                     if _ == 0:
-                        print("\nDid you really thinked that these will be enough for a room? Go fin somewhere else!\n")
+                        print("\nDid you really thinked that these will be enough for a room? Go find somewhere else!")
                         continue
                     else:
                         self.player.hp = self.player.max_hp
-                    print("\nThe bed was decent, and it's better than outside. You felt refreshed.\n")
+                    print("\nThe bed was decent, and it's better than outside. You felt refreshed.")
                 elif inp == "4":
                     tvrn = False
                     print("\nYou are leaving from this cozy tavern\n")
                 else:
-                    print("Please enter a reasonable number.\n")
+                    print("\nPlease enter a reasonable number.")
                 
 
     

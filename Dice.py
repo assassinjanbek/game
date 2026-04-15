@@ -28,13 +28,6 @@ class Dice:
     
     def __str__(self):
         return f"\033[92m{self.quantity}, {self.side}\033[0m sided dice \n"
-    
-class Buyable_Dice(Dice):
-    def __init__(self, side, quantity, price):
-        super().__init__(side, quantity)
-        self.price = price
-    
-
 
 def main():
     six_sided_dice = Dice(6, 5)

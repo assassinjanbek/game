@@ -25,11 +25,12 @@ class Combat:
 
     def start_combat(self):
         round_ = 1
-        print(f"Your enemy has {self.enemy.hp} hp.")
+        print(f"\nYour enemy has {self.enemy.hp} hp.")
         print(f"Your enemy will use {self.enemy.die.quantity}, {self.enemy.die.side} sided dice.\n")
 
         while self.enemy.hp > 0 and self.player.hp > 0:
             print(f"- Round {round_} -")
+            print(f"\n{self.enemy.general_info()}")
             die = self.players_dice()
             if die == 1 or die == 2:
                 print("You tossed a coin! 🪙")
@@ -54,27 +55,24 @@ class Combat:
                 print("Tie!")
 
             print(
-                f"You rolled {players_value}\n"
+                f"\nYou rolled {players_value}\n"
                 f"Enemy rolled {enemy_value}\n"
             )
             round_ += 1
 
-            if self.enemy.hp > 0 and self.player.hp > 0:
-                print(f"You have {self.player.hp} hp, enemy have {self.enemy.hp} hp\n")
-
         if self.enemy.hp <= 0:
             print("Enemy hp is 0\nYou beat the enemy! (〜￣▽￣)〜\n"
-            f"You gained {self.enemy.prize} coins"    
+            f"You gained {self.enemy.prize} coins\n"    
             )
             self.player.gain_coin(self.enemy.prize)
+            self.player.general_info()
         else:
             print("You are dead. Sorry.（＞人＜；）")
             sys.exit()
             
     def players_dice(self):
         while True:
-            no = input(f"You have {self.player.coin}\033[93m coin\033[0m\n"
-                       f"{self.player.dice_info()}\n"
+            no = input(f"{self.player.general_info()}"
                        f"Choose a dice from your inventory: ").strip()
             if no == "c":
                 value = self.player.toss_a_coin()

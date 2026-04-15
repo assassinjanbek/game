@@ -35,7 +35,7 @@ class Map:
             f"[1]> {rooms[0]}\n"
             f"[2]> {rooms[1]}\n")
             while True:
-                ans = input("Choose your room: ")
+                ans = input("(1/2): ")
                 if ans == "1" or ans == "2":
                     return rooms[int(ans)-1]
                 else:
@@ -47,7 +47,7 @@ class Map:
             f"[2]> {rooms[1]}\n"
             f"[3]> {rooms[2]}\n")
             while True:
-                ans = input("Choose your room: ")
+                ans = input("(1/2/3): ")
                 if ans == "1" or ans == "2" or ans == "3":
                     return rooms[int(ans)-1]
                 else:
