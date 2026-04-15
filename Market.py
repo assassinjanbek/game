@@ -23,6 +23,10 @@ class Market:
         print("\nYou entered to the weird looking market. Shopkeeper has a weird look.")
         mrkt = True
 
+        dices = [4, 6, 8, 10, 12, 20]
+        chosen_dices = random.sample(dices, k=3)
+        quantities = random.choices(range(3,10), k=3)
+
         while mrkt:
             
             print("\nWhat would you do?\n\n"
@@ -34,11 +38,9 @@ class Market:
             inp = input("(1/2/3): ")
 
             if inp == "1":
-                dices = [4, 6, 8, 10, 12, 20]
-                chosen_dices = random.sample(dices, k=3)
-                quantities = random.choices(range(3,10), k=3)
+                
                 prices = []
-                t = 5
+                t = 4
                 for _ in range(3):
                     prices.append(((chosen_dices[_])*(quantities[_]))//t)        
 

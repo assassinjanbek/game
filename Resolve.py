@@ -25,6 +25,12 @@ def resolve(room, player):
         market = Market(player)
         market.enter_market()
 
+    elif room == "Boss":
+        print("You encountered a mighty enemy.")
+        enemy = Enemy_selection.select_boss()
+        combat = Combat(enemy, player)
+        combat.start_combat()
+
 def boss(player):
     print("You encountered a mighty enemy.")
     enemy = Enemy_selection.select_boss()

@@ -27,7 +27,7 @@ class Dice:
         return value
     
     def __str__(self):
-        return f"\033[92m{self.quantity}, {self.side}\033[0m sided dice \n"
+        return f"\033[95m{self.quantity}, {self.side}\033[0m sided dice \n"
 
 def main():
     six_sided_dice = Dice(6, 5)

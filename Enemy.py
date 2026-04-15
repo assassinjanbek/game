@@ -1,9 +1,10 @@
 class Enemy:
     
-    def __init__(self, hp, die, prize):
+    def __init__(self, hp, die, prize, name):
         self.hp = int(hp)
         self.die = die
         self.prize = int(prize)
+        self.name = name
 
     @property
     def hp(self):

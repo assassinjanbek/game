@@ -3,10 +3,10 @@ import random
 class Map:
 
     def __init__(self):
-        self.floor = 0
+        self.floor = 1
         self.history = ["Tavern"]
-        self.pool = {"Merciful Enemy":40, "Cruel Enemy":10, "Event":20, "Market":10, "Tavern":10}
-        self.special_floor = 10
+        self.pool = {"Merciful Enemy":50, "Cruel Enemy":20, "Event":0, "Market":15, "Tavern":15}
+        self.special_floor = 11
 
     def create_choices(self):
         filtered_pool = {}
@@ -14,7 +14,9 @@ class Map:
         wghts = []
         rooms = []
         for room, weight in self.pool.items():
-            if  room == "Cruel Enemy" and self.floor < 4:
+            if  room == "Cruel Enemy" and self.floor < 5:
+                continue
+            if  room == "Tavern" and self.floor < 3:
                 continue
             if room == "Market" and self.history[-1] == "Market":
                 continue

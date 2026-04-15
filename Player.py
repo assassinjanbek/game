@@ -71,5 +71,6 @@ class Player:
         return message
     
     def general_info(self):
-        message = f"\nYour hp is {self.hp}/{self.max_hp} ❤️\nYou have {self.coin}\033[93m coin\033[0m 🪙\nYour dices 🎲 :\n{self.dice_info()}\n"
+        message = (f"\nYour \033[91mhp\033[0m is {self.hp}/{self.max_hp} ❤️\nYou have {self.coin}\033[93m coin\033[0m 🪙\n"
+        f"Your dices 🎲 :\n{self.dice_info()}\n")
         return message
