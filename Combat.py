@@ -61,7 +61,7 @@ class Combat:
                 print(f"You took \033[91m{damage}\033[0m damage.\n")
                 self.player.take_damage(damage)
             else:
-                print("Tie!")
+                print("\033[94mTie!\033[0m\n")
 
 
             round_ += 1

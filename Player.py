@@ -3,11 +3,12 @@ from Dice import Dice
 
 class Player:
     
-    def __init__(self, hp, coin, inventory, max_hp):
+    def __init__(self, hp, coin, inventory, max_hp, name):
         self.max_hp = int(max_hp)
         self.hp = int(hp)
         self.coin = int(coin)
         self.inventory = list(inventory)
+        self.name = name
         
 
     @property

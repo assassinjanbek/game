@@ -35,7 +35,7 @@ class Market:
             print("\nWhat would you do?\n\n"
             "[1] Buy something\n"
             "[2] Sell something\n"
-            "[3] Left the market\n"
+            "[3] Leave the market\n"
             )
 
             inp = input("(1/2/3): ")
@@ -43,9 +43,9 @@ class Market:
             if inp == "1":
                 
                 prices = []
-                t = 4
+                t = 3.5
                 for _ in range(3):
-                    prices.append(((chosen_dices[_])*(quantities[_]))//t)        
+                    prices.append(round(((chosen_dices[_])*(quantities[_]))/t))
 
                 buy = True
 
@@ -109,7 +109,7 @@ class Market:
                 while sell:
                     no = input(f"{self.player.general_info()}"
                                "[0] Go back.\n\n"
-                               "You will gain approximately 1/3 coin of your die's side number.\n\n"
+                               "You will gain approximately 1/4 coin of your die's side number.\n\n"
                                 "Choose a dice from your inventory to sell: ").strip()
 
                     if not no.isdigit():
@@ -119,8 +119,8 @@ class Market:
                     elif 0 <= int(no) - 1 < len(self.player.inventory):
                         die = self.player.inventory[int(no) - 1]
                         die.quantity -= 1
-                        self.player.gain_coin((die.side)//3)
-                        print(f"\nYou gained \033[93m{(die.side)//3} coin\033[0m.")
+                        self.player.gain_coin(round((die.side)/4))
+                        print(f"\nYou gained \033[93m{round((die.side)/4)} coin\033[0m.")
                         if die.quantity == 0:
                             self.player.inventory.remove(die)
 

@@ -2,6 +2,7 @@ from Combat import Combat
 import Enemy_selection
 from Tavern import Tavern
 from Market import Market
+from Events import Event
 
 def resolve(room, player):
     if room == "Merciful Enemy":
@@ -19,14 +20,15 @@ def resolve(room, player):
         tavern.enter_tavern()
 
     elif room == "Event":
-        print("What?!? an event?!?!")
+        event = Event(player)
+        event.start_event()
 
     elif room == "Market":
         market = Market(player)
         market.enter_market()
 
     elif room == "Boss":
-        print("You encountered a mighty enemy.")
+        print("You've encountered a mighty enemy.")
         enemy = Enemy_selection.select_boss()
         combat = Combat(enemy, player)
         combat.start_combat()

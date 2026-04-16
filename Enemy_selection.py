@@ -7,19 +7,19 @@ def select_merciful_enemy():
     if enemy_no == 1:
         die = Dice(4, 4)
         hp = 4
-        prize = 3
+        prize = 5
         name = "Watermelon Chameleon"
         color = "\033[91m"
     elif enemy_no == 2:
         die = Dice(6, 4)
         hp = 10
-        prize = 6
+        prize = 8
         name = "Honorable Knight"
         color = "\033[90m"
     elif enemy_no == 3:
         die = Dice(8, 2)
         hp = 14
-        prize = 8
+        prize = 11
         name = "Depressive Ogre"
         color = "\033[91m"
     elif enemy_no == 4:
@@ -31,7 +31,7 @@ def select_merciful_enemy():
     else:
         die = Dice(6, 6)
         hp = 6
-        prize = 8
+        prize = 10
         name = "Extremely Drunk Elf"
         color = "\033[93m"
     enemy = Enemy(hp, die, prize, name, color)
@@ -42,19 +42,19 @@ def select_cruel_enemy():
     if enemy_no == 1:
         die = Dice(20, 2)
         hp = 2
-        prize = 15
+        prize = 16
         name = "Crazy Old Man"
         color = "\033[90m"
     elif enemy_no == 2:
         die = Dice(12, 4)
-        hp = 6
-        prize = 15
+        hp = 8
+        prize = 18
         name = "Bloodthirsty Lizard"
         color = "\033[91m"
     else:
         die = Dice(8, 8)
         hp = 8
-        prize = 15
+        prize = 20
         name = "Strong Minded Fighter"
         color = "\033[94m"
     enemy = Enemy(hp, die, prize, name, color)
@@ -65,13 +65,13 @@ def select_boss():
     if enemy_no == 1:
         die = Dice(10, 20)
         hp = 15
-        prize = 100
+        prize = 50
         name = "Dungeon Master"
         color = "\033[95m"
     else:
         die = Dice(12, 12)
         hp = 20
-        prize = 100
+        prize = 50
         name = "Silk Queen"
         color = "\033[95m"
     enemy = Enemy(hp, die, prize, name, color)
