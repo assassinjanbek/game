@@ -15,5 +15,5 @@ def loop(player):
         map.next_floor()
         if map.floor == 11:
             start = False
-            Resolve.resolve("boss", player)
+            Resolve.resolve("Boss", player)
     
