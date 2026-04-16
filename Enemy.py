@@ -1,10 +1,11 @@
 class Enemy:
     
-    def __init__(self, hp, die, prize, name):
+    def __init__(self, hp, die, prize, name, color):
         self.hp = int(hp)
         self.die = die
         self.prize = int(prize)
         self.name = name
+        self.color = color
 
     @property
     def hp(self):
@@ -37,5 +38,5 @@ class Enemy:
         self.hp += heal
 
     def general_info(self):
-        message = f"Enemy has {self.hp} hp ❤️\n{self.die.quantity}, {self.die.side} sided dice 🎲."
+        message = f"Enemy has \033[91m{self.hp} \033[0mhp ❤️\n\033[95m{self.die.quantity}, {self.die.side}\033[0m sided dice 🎲."
         return message

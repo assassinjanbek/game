@@ -1,4 +1,5 @@
 import random
+from Dice import Dice
 
 class Player:
     
@@ -54,6 +55,17 @@ class Player:
 
     def gain_coin(self, price):
         self.coin += price
+
+    def gain_dice(self, q, d):
+        die_found = None
+        for die in self.inventory:
+            if die.side == d:
+                die_found = die
+                break
+        if die_found:
+            die_found.quantity += q
+        else:
+            self.inventory.append(Dice(d, q))
     
     def toss_a_coin(self):
         if self.coin == 0:
@@ -71,6 +83,6 @@ class Player:
         return message
     
     def general_info(self):
-        message = (f"\nYour \033[91mhp\033[0m is {self.hp}/{self.max_hp} ❤️\nYou have {self.coin}\033[93m coin\033[0m 🪙\n"
+        message = (f"\nYour \033[91mhp\033[0m is \033[91m{self.hp}\033[0m/{self.max_hp} ❤️\nYou have \033[93m{self.coin} coin\033[0m 🪙\n"
         f"Your dices 🎲 :\n{self.dice_info()}\n")
         return message

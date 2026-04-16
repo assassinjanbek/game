@@ -12,7 +12,7 @@ class Tavern:
         while tvrn:
             print(self.player.general_info(), end="")
             if self.player.hp == self.player.max_hp:
-                print("Your health is full.\n\n"
+                print("Your \033[91mhealth\033[0m is full.\n\n"
                 "[1] Take an additional beer (give 2 coins)\n"
                 "[2] Left the tavern (exit)")
 
@@ -36,9 +36,9 @@ class Tavern:
                 
             else:
                 print("What would you do?\n\n"
-                "[1] Take a beer (give 2 coins => heal 3 hp)\n"
-                "[2] Eat a meal (give 6 coins => heal 12 hp)\n"
-                "[3] Loan a room (give 20 coins => heal to your max hp)\n"
+                "[1] Take a beer (give \033[93m2 coins\033[0m => heal \033[91m3 hp\033[0m)\n"
+                "[2] Eat a meal (give \033[93m6 coins\033[0m => heal \033[91m12 hp\033[0m)\n"
+                "[3] Loan a room (give \033[93m20 coins\033[0m => heal to your \033[91mmax hp\033[0m)\n"
                 "[4] Left the tavern (exit)")
 
                 inp = input("(1/2/3/4): ")

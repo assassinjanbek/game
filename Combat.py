@@ -25,10 +25,10 @@ class Combat:
         self._player = player
 
     def start_combat(self):
-        print(f"\nYou've encountered {self.enemy.name}!")
+        print(f"\nYou've encountered {self.enemy.color}{self.enemy.name}\033[0m!")
         round_ = 1
-        print(f"\nYour enemy has {self.enemy.hp} hp.")
-        print(f"Your enemy will use {self.enemy.die.quantity}, {self.enemy.die.side} sided dice.\n")
+        print(f"\nYour enemy has \033[91m{self.enemy.hp} hp\033[0m.")
+        print(f"Your enemy will use \033[95m{self.enemy.die.quantity}, {self.enemy.die.side}\033[0m sided dice.\n")
 
         while self.enemy.hp > 0 and self.player.hp > 0:
             print(f"- Round {round_} -")
@@ -67,7 +67,7 @@ class Combat:
             round_ += 1
 
         if self.enemy.hp <= 0:
-            print("Enemy hp is 0\n\033[92mYou beat the enemy! (〜￣▽￣)〜\033[0m\n"
+            print("Enemy \033[91mhp is \033[91m0\033[0m\n\033[92mYou beat the enemy! (〜￣▽￣)〜\033[0m\n"
             f"You gained {self.enemy.prize} \033[93mcoins\033[0m\n"    
             )
             self.player.gain_coin(self.enemy.prize)
@@ -98,12 +98,12 @@ class Combat:
                 else:
                     return value
             elif not no.isdigit():
-                print("Please enter a number.")
+                print("\nPlease enter a number.")
                 continue
 
             if 0 <= int(no) - 1 < len(self.player.inventory):
                 die = self.player.inventory[int(no) - 1]
                 return die
             else:
-                print("Please enter a valid number. (For example, 1 for your first die)")
+                print("\nPlease enter a valid number. (For example, 1 for your first die)")
         
