@@ -46,6 +46,7 @@ class Player:
 
     def heal(self, heal):
         self.hp += heal
+        print("\nYou've recovered \033[91m5 hp\033[0m.")
 
     def spend_coin(self, price):
         if (self.coin - price) < 0:

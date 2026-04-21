@@ -5,7 +5,7 @@ class Map:
     def __init__(self):
         self.floor = 1
         self.history = ["Tavern"]
-        self.a, self.b, self.c, self.d, self.e = 50, 20, 0, 15, 15
+        self.a, self.b, self.c, self.d, self.e = 50, 20, 25, 15, 15
         self.pool = {"Merciful Enemy":self.a, "Cruel Enemy":self.b, "Event":self.c, "Market":self.d, "Tavern":self.e}
 
     def create_choices(self):

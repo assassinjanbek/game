@@ -83,6 +83,10 @@ class Combat:
                     self.player.inventory.append(Dice(self.enemy.die.side, self.enemy.die.quantity))
                 print(f"You took \033[95m{self.enemy.die.quantity}, {self.enemy.die.side}\033[0m sided dice from the enemy.\n")
             self.player.general_info()
+        elif not self.player.inventory and self.player.coin == 0:
+            self.player.hp = 0
+            print("You \033[91mdied\033[0m from misery. Poor wizard, nobody will remember you.")
+            sys.exit()
         else:
             print("You are \033[91mdead.\033[0m Sorry.（＞人＜；）")
             sys.exit()
@@ -90,7 +94,7 @@ class Combat:
     def players_dice(self):
         while True:
             no = input(f"{self.player.general_info()}"
-                       f"Choose a dice from your inventory: ").strip()
+                       f"Choose a die from your inventory: ").strip()
             if no == "c":
                 value = self.player.toss_a_coin()
                 if value == 0:

@@ -1,12 +1,13 @@
 import Character
 import Menu
 import GameLoop
+import Win
 
 def game():
     player_name = Menu.menu()
     player = Character.character(player_name)
     print(player.general_info())
     GameLoop.loop(player)
-    print("Congrats! You beat the boss! YOU won the game!")
+    Win.winning(player)
 
 game()

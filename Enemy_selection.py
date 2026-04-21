@@ -65,13 +65,13 @@ def select_boss():
     if enemy_no == 1:
         die = Dice(10, 20)
         hp = 15
-        prize = 50
+        prize = 100
         name = "Dungeon Master"
         color = "\033[95m"
     else:
         die = Dice(12, 12)
         hp = 20
-        prize = 50
+        prize = 100
         name = "Silk Queen"
         color = "\033[95m"
     enemy = Enemy(hp, die, prize, name, color)
