@@ -13,7 +13,6 @@ def loop(player):
             map.history.append(floor_name)
         Resolve.resolve(floor_name, player)
         map.next_floor()
-        if map.floor == 11:
+        if map.floor == 12:
             start = False
-            Resolve.resolve("Boss", player)
     

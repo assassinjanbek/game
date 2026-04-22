@@ -46,7 +46,6 @@ class Player:
 
     def heal(self, heal):
         self.hp += heal
-        print("\nYou've recovered \033[91m5 hp\033[0m.")
 
     def spend_coin(self, price):
         if (self.coin - price) < 0:
@@ -68,6 +67,9 @@ class Player:
             die_found.quantity += q
         else:
             self.inventory.append(Dice(d, q))
+
+    def gain_max_hp(self, value):
+        self.max_hp += value
     
     def toss_a_coin(self):
         if self.coin == 0:

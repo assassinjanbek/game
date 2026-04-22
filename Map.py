@@ -5,7 +5,7 @@ class Map:
     def __init__(self):
         self.floor = 1
         self.history = ["Tavern"]
-        self.a, self.b, self.c, self.d, self.e = 50, 20, 25, 15, 15
+        self.a, self.b, self.c, self.d, self.e = 50, 20, 20, 15, 15
         self.pool = {"Merciful Enemy":self.a, "Cruel Enemy":self.b, "Event":self.c, "Market":self.d, "Tavern":self.e}
 
     def create_choices(self):
@@ -14,6 +14,12 @@ class Map:
         rmms = []
         wghts = []
         rooms = []
+        if self.floor == 6:
+            rooms = ["Cruel Enemy"]
+            return rooms
+        elif self.floor == 11:
+            rooms = ["Boss"]
+            return rooms
         for room, weight in self.pool.items():
             if  room == "Cruel Enemy" and self.floor < 5:
                 continue
@@ -24,6 +30,8 @@ class Map:
             if room == "Market" and self.history[-1] == "Market":
                 continue
             if room == "Tavern" and self.history[-1] == "Tavern":
+                continue
+            if room == "Event" and self.history[-1] == "Event":
                 continue
             if self.floor == 10:
                 self.a, self.b, self.c, self.d, self.e = 10, 0, 0, 45, 30
@@ -37,6 +45,15 @@ class Map:
         return rooms
 
     def display_choices(self, rooms):
+        if len(rooms) == 1:
+            print("Choose your room:\n\n"
+            f"[1]> {rooms[0]}\n")
+            while True:
+                ans = input("(1): ")
+                if ans == "1":
+                    return rooms[int(ans)-1]
+                else:
+                    print("Write 1 to continue")
         if len(rooms) == 2:
             print("Choose your room:\n\n"
             f"[1]> {rooms[0]}\n"
