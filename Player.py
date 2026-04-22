@@ -88,5 +88,5 @@ class Player:
     
     def general_info(self):
         message = (f"\nYour \033[91mhp\033[0m is \033[91m{self.hp}\033[0m/{self.max_hp} ❤️\nYou have \033[93m{self.coin} coin\033[0m 🪙\n"
-        f"Your dices 🎲 :\n{self.dice_info()}\n")
+        f"Your dices 🎲 :\n{self.dice_info()}")
         return message

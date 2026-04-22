@@ -25,13 +25,13 @@ def select_merciful_enemy():
     elif enemy_no == 4:
         die = Dice(12, 3)
         hp = 5
-        prize = 8
+        prize = 9
         name = "The Rogue"
         color = "\033[93m"
     else:
         die = Dice(6, 6)
         hp = 6
-        prize = 10
+        prize = 8
         name = "Extremely Drunk Elf"
         color = "\033[93m"
     enemy = Enemy(hp, die, prize, name, color)
@@ -41,12 +41,12 @@ def select_cruel_enemy():
     enemy_no = random.randint(1,3)
     if enemy_no == 1:
         die = Dice(20, 2)
-        hp = 2
-        prize = 16
+        hp = 5
+        prize = 18
         name = "Crazy Old Man"
         color = "\033[90m"
     elif enemy_no == 2:
-        die = Dice(12, 4)
+        die = Dice(12, 5)
         hp = 8
         prize = 18
         name = "Bloodthirsty Lizard"
@@ -54,7 +54,7 @@ def select_cruel_enemy():
     else:
         die = Dice(8, 8)
         hp = 8
-        prize = 20
+        prize = 18
         name = "Strong Minded Fighter"
         color = "\033[94m"
     enemy = Enemy(hp, die, prize, name, color)

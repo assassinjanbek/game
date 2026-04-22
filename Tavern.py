@@ -12,7 +12,7 @@ class Tavern:
         while tvrn:
             print(self.player.general_info(), end="")
             if self.player.hp == self.player.max_hp:
-                print("Your \033[91mhealth\033[0m is full.\n\n"
+                print("\nYour \033[91mhealth\033[0m is full.\n\n"
                 "[1] Take an additional beer (give \033[93m3 coins\033[0m)\n"
                 "[2] Leave the tavern (exit)")
 
@@ -35,7 +35,7 @@ class Tavern:
                     print("\nPlease enter a reasonable number.")
                 
             else:
-                print("What would you do?\n\n"
+                print("\nWhat would you do?\n\n"
                 "[1] Take a beer (give \033[93m3 coins\033[0m => heal \033[91m3 hp\033[0m)\n"
                 "[2] Eat a meal (give \033[93m10 coins\033[0m => heal \033[91m12 hp\033[0m)\n"
                 "[3] Loan a room (give \033[93m18 coins\033[0m => heal to your \033[91mmax hp\033[0m)\n"

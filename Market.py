@@ -61,7 +61,7 @@ class Market:
                         offer_3 = "[3] \033[96mOwned\033[0m\n"
 
                     print(self.player.general_info(), end="")
-                    print(f"{offer_1}{offer_2}{offer_3}\n[0] Go back.")
+                    print(f"\n{offer_1}{offer_2}{offer_3}\n[0] Go back.")
 
                     buy_inp = input("(1/2/3/0): ")
 

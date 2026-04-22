@@ -6,10 +6,10 @@ class Map:
         self.floor = 1
         self.history = ["Tavern"]
         self.a, self.b, self.c, self.d, self.e = 50, 20, 20, 15, 15
-        self.pool = {"Merciful Enemy":self.a, "Cruel Enemy":self.b, "Event":self.c, "Market":self.d, "Tavern":self.e}
+        self.pool = {"Merciful Enemy":50, "Cruel Enemy":20, "Event":20, "Market":15, "Tavern":15}
 
     def create_choices(self):
-        self.a, self.b, self.c, self.d, self.e = 50, 20, 0, 15, 15
+        self.pool = {"Merciful Enemy":50, "Cruel Enemy":20, "Event":20, "Market":15, "Tavern":15}
         filtered_pool = {}
         rmms = []
         wghts = []
@@ -20,6 +20,8 @@ class Map:
         elif self.floor == 11:
             rooms = ["Boss"]
             return rooms
+        if self.floor == 10:
+            self.pool = {"Merciful Enemy":10, "Cruel Enemy":0, "Event":0, "Market":45, "Tavern":35}
         for room, weight in self.pool.items():
             if  room == "Cruel Enemy" and self.floor < 5:
                 continue
@@ -33,8 +35,6 @@ class Map:
                 continue
             if room == "Event" and self.history[-1] == "Event":
                 continue
-            if self.floor == 10:
-                self.a, self.b, self.c, self.d, self.e = 10, 0, 0, 45, 30
             filtered_pool[room] = weight
         for room in filtered_pool:
             rmms.append(room)

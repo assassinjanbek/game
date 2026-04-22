@@ -94,7 +94,7 @@ class Combat:
     def players_dice(self):
         while True:
             no = input(f"{self.player.general_info()}"
-                       f"Choose a die from your inventory: ").strip()
+                       f"\nChoose a die from your inventory: ").strip()
             if no == "c":
                 value = self.player.toss_a_coin()
                 if value == 0:
