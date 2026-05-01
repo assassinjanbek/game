@@ -1,5 +1,6 @@
 import random
 from Player import Player
+import sys
 
 class Event:
     def __init__(self, player: Player):
@@ -68,6 +69,54 @@ class Event:
             
             print(self.player.general_info())
 
+        if self.event_no == 4:
+            print("\nYou saw a cave enterance, it's covered by webs and looks terrifying. Do you really want to go inside?\n" \
+            "[1] Yes.\n" \
+            "[2] Hell no. (You coward.)")
+            loop = True
+            while loop:
+                _ = input("(1/2): ")
+                if _ == "1":
+                    loop = False
+                    print("\nYou've entered the cave, there are cloths and armors everywhere, you've heard some voices. Do you really want to go deeper?\n" \
+                    "[1] Hell yeah.\n" \
+                    "[2] No. (You coward)")
+                    l = True
+                    while l:
+                        _ = input("(1/2): ")
+                        if _ == "1":
+                            l = False
+                            print("\n You went deeper and have encountered with an old spider-lady! Apparently, she is knitting something.\n" \
+                            "'Ohh hi dear! Come on sit, tell me, do you need something?' she said.\n" \
+                            "[1] 'Yeah, I am very fragile for this cruel world, do you have something for me?'\n" \
+                            "[2] 'Yeah, I am getting out of dice, do you have some dice?'\n" \
+                            "[3] 'Yeah, I want your little soul, you monster!'\n")
+                            lo = True
+                            while lo:
+                                _ = input("(1/2/3): ")
+                        elif _ == "2":
+                            print("\nYou get away from the cave but your curiosity hurt you\n")
+                            self.player.take_damage(3)
+                            if self.player.hp < 1:
+                                print("You are \033[91mdead.\033[0m Sorry.（＞人＜；）")
+                                sys.exit()
+                            else:
+                                print("You took \033[91m3\033[0m damage\n")
+                                l = False
+                        else:
+                            print("\nEnter a valid number")
+                elif _ == "2":
+                    print("\nYou get away from the cave but your curiosity hurt you\n")
+                    self.player.take_damage(3)
+                    if self.player.hp < 1:
+                        print("You are \033[91mdead.\033[0m Sorry.（＞人＜；）")
+                        sys.exit()
+                    else:
+                        print("You took \033[91m3\033[0m damage\n")
+                        loop = False
+
+                else:
+                    print("\nEnter a valid number") 
 
     def roll_your_dice(self):
         while True:
