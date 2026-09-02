@@ -1,11 +1,14 @@
 import random
 from Player import Player
 import sys
+from Combat import Combat
+from Enemy import Enemy
+from Dice import Dice
 
 class Event:
     def __init__(self, player: Player):
         self.player = player
-        self.event_no = random.randint(1,3)
+        self.event_no = random.randint(1,4)
 
     def start_event(self):
         if self.event_no == 1:
@@ -70,7 +73,7 @@ class Event:
             print(self.player.general_info())
 
         if self.event_no == 4:
-            print("\nYou saw a cave enterance, it's covered by webs and looks terrifying. Do you really want to go inside?\n" \
+            print("\nYou saw a cave enterance, it's covered by webs and looks terrifying. Do you really want to go inside?\n\n" \
             "[1] Yes.\n" \
             "[2] Hell no. (You coward.)")
             loop = True
@@ -78,7 +81,7 @@ class Event:
                 _ = input("(1/2): ")
                 if _ == "1":
                     loop = False
-                    print("\nYou've entered the cave, there are cloths and armors everywhere, you've heard some voices. Do you really want to go deeper?\n" \
+                    print("\nYou've entered the cave, there are cloths and armors everywhere, you've heard some voices. Do you really want to go deeper?\n\n" \
                     "[1] Hell yeah.\n" \
                     "[2] No. (You coward)")
                     l = True
@@ -86,22 +89,49 @@ class Event:
                         _ = input("(1/2): ")
                         if _ == "1":
                             l = False
-                            print("\n You went deeper and have encountered with an old spider-lady! Apparently, she is knitting something.\n" \
-                            "'Ohh hi dear! Come on sit, tell me, do you need something?' she said.\n" \
+                            print("\n You went deeper and have encountered with an old spider-lady! Apparently, she is knitting something.\n\n" \
+                            "'Oh hi dear! Come on sit, tell me, do you need something?' she said.\n\n" \
                             "[1] 'Yeah, I am very fragile for this cruel world, do you have something for me?'\n" \
                             "[2] 'Yeah, I am getting out of dice, do you have some dice?'\n" \
                             "[3] 'Yeah, I want your little soul, you monster!'\n")
-                            lo = True
-                            while lo:
-                                _ = input("(1/2/3): ")
+                            _ = input("(1/2/3): ")
+                            if _ == "1":
+                                print("\n'What a coincidence my little one! You can take this webby armor that I just knitted.' she said.")
+                                self.player.gain_max_hp(5)
+                                print("\nYou've gained \033[91m5 max hp\033[0m from that armor.")
+                                print(self.player.general_info())
+
+                            elif _ == "2":
+                                print("\n'You may take this webby dice bag then my darling' she said.\n When you took the bag, it exploded and plenty" \
+                                "of dice fell into your hand.")
+                                self.player.gain_dice(1,4)
+                                self.player.gain_dice(1,6)
+                                self.player.gain_dice(1,8)
+                                self.player.gain_dice(1,10)
+                                self.player.gain_dice(1,12)
+                                self.player.gain_dice(1,20)
+                                print("\nYou've gained \033[95ma dice set\033[0m.")
+                                print(self.player.general_info())
+                                
+                            else:
+                                print("She become furious istantly, you've started to fight under the moonlight.")
+                                enemy = Enemy(Dice(8, 8), 5, 25, "Spider Lady", "\033[91m")
+                                combat = Combat(enemy, self.player)
+                                combat.start_combat()
+                                print("\n You also took the webby armor she was knitting.")
+                                self.player.gain_max_hp(5)
+                                print("\nYou've gained \033[91m5 max hp\033[0m from that armor.")
+                                print(self.player.general_info())
+
+
                         elif _ == "2":
                             print("\nYou get away from the cave but your curiosity hurt you\n")
-                            self.player.take_damage(3)
+                            self.player.take_damage(5)
                             if self.player.hp < 1:
                                 print("You are \033[91mdead.\033[0m Sorry.（＞人＜；）")
                                 sys.exit()
                             else:
-                                print("You took \033[91m3\033[0m damage\n")
+                                print("You took \033[91m5\033[0m damage\n")
                                 l = False
                         else:
                             print("\nEnter a valid number")
@@ -116,7 +146,7 @@ class Event:
                         loop = False
 
                 else:
-                    print("\nEnter a valid number") 
+                    print("\nEnter a valid number")
 
     def roll_your_dice(self):
         while True:

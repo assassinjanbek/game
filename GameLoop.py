@@ -13,6 +13,6 @@ def loop(player):
             map_.history.append(floor_name)
         Resolve.resolve(floor_name, player)
         map_.next_floor()
-        if map_.floor == 12:
+        if map_.floor == 16:
             start = False
     

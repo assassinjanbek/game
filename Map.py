@@ -5,7 +5,6 @@ class Map:
     def __init__(self):
         self.floor = 1
         self.history = ["Tavern"]
-        self.a, self.b, self.c, self.d, self.e = 50, 20, 20, 15, 15
         self.pool = {"Merciful Enemy":50, "Cruel Enemy":20, "Event":20, "Market":15, "Tavern":15}
 
     def create_choices(self):
@@ -20,8 +19,8 @@ class Map:
         elif self.floor == 15:
             rooms = ["Boss"]
             return rooms
-        if self.floor == 6 or 14:
-            self.pool = {"Merciful Enemy":10, "Cruel Enemy":0, "Event":0, "Market":45, "Tavern":35}
+        if self.floor == 6 or self.floor == 14:
+            self.pool = {"Merciful Enemy":0, "Cruel Enemy":0, "Event":10, "Market":45, "Tavern":35}
         for room, weight in self.pool.items():
             if  room == "Cruel Enemy" and self.floor < 8:
                 continue

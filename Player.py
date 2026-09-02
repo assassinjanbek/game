@@ -70,6 +70,7 @@ class Player:
 
     def gain_max_hp(self, value):
         self.max_hp += value
+        self.hp += value
     
     def toss_a_coin(self):
         if self.coin == 0:
