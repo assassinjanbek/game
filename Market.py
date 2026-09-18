@@ -119,7 +119,8 @@ class Market:
                     elif 0 <= int(no) - 1 < len(self.player.inventory):
                         die = self.player.inventory[int(no) - 1]
                         die.quantity -= 1
-                        self.player.gain_coin(round((die.side)/4))
+                        price = round((die.side)/4)
+                        self.player.gain_coin(price)
                         print(f"\nYou gained \033[93m{round((die.side)/4)} coin\033[0m.")
                         if die.quantity == 0:
                             self.player.inventory.remove(die)

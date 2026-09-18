@@ -26,4 +26,3 @@ def character(player):
     player = Player(player_hp, player_coin, player_i, player_max, name)
     
     return player
-

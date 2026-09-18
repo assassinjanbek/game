@@ -165,6 +165,8 @@ class Event:
             if 0 <= int(no) - 1 < len(self.player.inventory):
                 die = self.player.inventory[int(no) - 1]
                 value = die.rolling()
+                if die.quantity == 0:
+                    self.player.inventory.remove(die)
                 return value
             else:
                 print("\nPlease enter a valid number. (For example, 1 for your first die)")
